@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=<device-width>, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.0/css/bootstrap.min.css" integrity="sha384-PDle/QlgIONtM1aqA2Qemk5gPOE7wFq8+Em+G/hmo5Iq0CCmYZLv3fVRDJ4MMwEA" crossorigin="anonymous">
+    <title>wall</title>
+</head>
+
+<body style="width:90%;margin:1% 2%">
+    <!-- {% with reg = get_flashed_messages(category_filter=["reg"]) %} {% if reg %} {% for msg in reg %}
+    <p style="color:red">{{ msg }}</p>
+    {% endfor %} {% endif %} {% endwith %} -->
+    <!-- <h1>Welcome,you are login,{{session['username']}}</h1>
+    <button><a href="/logout">logout</a></button> -->
+
+    <div class="row" style="border-bottom:2px solid black;">
+        <h3 class="col-md-4">CodingDojo Wall</h3>
+        <h3 class='ml-auto'>Welcome,{{session['username']}} <a href="/logout">Log Out</a></h3>
+    </div>
+
+    <div style="width:43%;margin:2% 3%;display: inline-block">
+        <h3><u>
+    <span style="color:greenyellow">{{rec_num}}</span> Message(s) for You
+        </u></h3>
+        {%if receive%} {%for one in receive %}
+        <div class="row" style="margin:25px auto;">
+            <div style="width:80%">
+                <div class="row">
+                    <p>{{one['first_name']}} said </p>
+                    <p style="color:blueviolet">(posted at {{one['creat_at']}}):</p>
+                </div>
+                <div class="row">
+                    <p class="col-md-10 offset-md-2">"{{one['commet']}}"</p>
+                </div>
+            </div>
+            <a href="/delete/{{one['info_creator_id']}}"> <img src="{{url_for('static',filename='trashbin.png')}}" style="width:35px"></a>
+        </div>
+        {%endfor%} {%endif%}
+    </div>
+
+
+
+    <div style="min-height:440px; width:43%;margin:2% 0px 0px 0px;display: inline-block;vertical-align: top;border-left: 2px solid black;padding-left:4% ">
+        <h3><u>
+        Send Messages
+            </u></h3>
+        <p style="color:coral">Your ip address:{{ip}}</p>
+        <p style="color:greenyellow">You have sent {{send_num}} messages so far</p>
+        {%if info%} {%for one in info%}{%if one['first_name']!=session['username']%}
+        <form action="/comment" method="POST" style="margin:6% 0px;">
+            <div class="row">
+                <div class="col-md-3">{{one['first_name']}}</div>
+                <input class="col-md-6" style="overflow: scroll" type="text" name="msg">
+                <input type="hidden" name="receiver" value="{{one['id']}}">
+                <input type="hidden" name="creator" value="{{session['id']}}">
+                <input class="ml-auto border  btn shadow" type="submit" value="submit">
+            </div>
+        </form>
+        {%endif%} {%endfor%} {%endif%}
+    </div>
+
+
+
+
+
+</body>
+
+</html>

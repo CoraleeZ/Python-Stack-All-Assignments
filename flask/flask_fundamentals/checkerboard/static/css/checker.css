@@ -1,0 +1,51 @@
+/* #wrapper {
+    display: inline-block;
+    margin: 0px;
+    padding: 0px;
+} */
+
+* {
+    margin: 0px;
+    padding: 0px;
+}
+
+.row {
+    margin: 0px;
+    padding: 0px;
+    height: 40px;
+}
+
+.cube {
+    display: inline-block;
+    height: 40px;
+    width: 40px;
+}
+
+
+/* .red {
+    background-color: red;
+    display: inline-block;
+    height: 40px;
+    width: 40px;
+}
+
+.yellow {
+    background-color: yellow;
+    display: inline-block;
+    height: 40px;
+    width: 40px;
+}
+
+.green {
+    background-color: green;
+    display: inline-block;
+    height: 40px;
+    width: 40px;
+} */
+
+#number,
+#col,
+#class_name1,
+#class_name2 {
+    display: none;
+}

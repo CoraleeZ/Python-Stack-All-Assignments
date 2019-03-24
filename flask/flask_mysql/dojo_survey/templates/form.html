@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>result</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+</head>
+
+<body>
+
+    <form action="/result" method="POST" class="border col-sm-6">
+        <div class="form-group b-block">
+            Your name:<input type="text" class="b-inline-block" name="name">
+        </div>
+        <div class="form-group">
+            Dojo location:
+            <select name="location">
+                <option value="0"></option>
+                <option value="1">Seattle</option>
+                <option value="2">San Jose</option>
+                <option value="3">Chicago</option>
+                <option value="4">New York</option>
+            </select>
+        </div>
+        <div class="form-group">
+            favorite lauguage:
+            <select name="lan">
+                <option value="0"></option>
+                <option value="1">Chinese</option>
+                <option value="2">japanses</option>
+                <option value="3">Franch</option>
+                <option value="4">English</option>
+            </select>
+        </div>
+        <div class="form-group">
+            comment(optional):
+            <input type="text" class="form-control" style="height:100px;" name="comment">
+        </div>
+
+
+
+
+        <button type="submit" class="border btn shadow mb-2 " style="margin:1% 0px 1% 80%;">Submit</button>
+    </form>
+
+    {%if get_flashed_messages()%} {%for one in get_flashed_messages()%}
+    <p style='color:red;'>{{one}}</p>
+    {%endfor%} {%endif%}
+
+</body>
+
+</html>

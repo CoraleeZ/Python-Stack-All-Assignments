@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>result</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+</head>
+
+<body>
+    <h1>Submitted Info</h1>
+    <p>Name:{{name_html}}</p>
+    <p>Location:{{location_html}}</p>
+    <p>Favorite Language:{{lan_html}}</p>
+    <P>Comment:{{comment_html}}</P>
+    <p>gender:{{gender_html}}</p>
+    <p>check: {%for x in check_html%} {{x}} {%endfor%}
+    </p>
+
+    <form action="/" method="POST">
+        <input type="submit" value="goback">
+    </form>
+</body>
+
+</html>

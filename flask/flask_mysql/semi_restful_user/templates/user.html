@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <title>User</title>
+</head>
+
+<body style="width:100%; padding: 3% 10%">
+
+    <h2 style="display:inline-block;">User {{userinfo[0]['id']}}</h2>
+    <a style="display:inline-block;margin:0px 0% 0px 60%;" href="/users">Home</a>
+
+    <div style="margin:10% 0px 0px 0px;font-weight: 600">
+        <p>Full Name:{{userinfo[0]['first_name']}} {{userinfo[0]['last_name']}}</p>
+        <p>Email:{{userinfo[0]['email']}}</p>
+        <p>Created On:{{userinfo[0]['creat_at']}}</p>
+        <p>Last Update On:{{userinfo[0]['update_at']}}</p>
+        <p>Description:{{userinfo[0]['description']}}</p>
+    </div>
+    <div style="margin:10% 0px;">
+        <a href="/users/{{userinfo[0]['id']}}/edit">Edit</a>|<a href="/users/{{userinfo[0]['id']}}/destroy">Delete</a>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <title>Wall page</title>
+    <style>
+        .red {
+            color: red;
+        }
+    </style>
+
+</head>
+
+<body style="width:100%">
+    <div class='row' style="margin:0px; padding:0px 10px">
+        <h2 class='col-sm-3 '>CodingDojo Wall</h2>
+        <p style="margin-top:10px;" class='offset-sm-5 col-sm-2 '>Welcome {{user.first_name}}</p>
+        <div style="margin-top:10px;">
+            <a class='ml-auto ' href="/logout">Log off</a>|<a href="/mainwall">Go back</a>
+        </div>
+    </div>
+    </div>
+    <hr style="border-top:2px solid black;">
+
+    <form action="/addmessage" method="POST" class="offset-sm-1">
+        {%csrf_token%}
+        <div class='col-sm-11'>
+            <p>Post a message</p>
+            <textarea name='message' style="width:96%;height:100px;border: 2px solid black;border-radius: 5px"></textarea>
+            <input type="hidden" name='userid' value='{{user.id}}'>
+            <input type="submit" value="Post a message" class='offset-sm-10 btn btn-primary shadow'>
+        </div>
+    </form>
+
+    {%if messages%} {% for message in messages %}
+    <p {% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</p>
+    {%endfor%}{%endif%}
+
+
+    <div class='col-sm-11 offset-sm-1' style="margin-top:2%">
+        {% for x in postm %}
+
+        <div>
+            <div class="col-sm-9 d-inline-block">
+                <p style="font-weight:600;">{{x.user.first_name}} {{x.user.last_name}}-{{x.created_at}}</p>
+                <p style="margin:0px 2%;font-family: cursive">{{x.message}}</p>
+            </div>
+            <a class="col-sm-2 d-inline-block" href="/deletemessage/{{x.id}}">Delete message</a>
+        </div>
+
+        <div class='col-sm-10 offset-sm-1' style="margin-top:2%;margin-left:4%">
+            {%for y in x.comment.all%}
+            <div>
+                <div>
+                    <p style="font-weight:600;">{{y.user.first_name}} {{y.user.last_name}}-{{y.created_at}}</p>
+                    <p style="font-family: cursive">{{y.comment}}</p>
+                </div>
+                <a class="col-sm-2 d-block" href="/deletecomment/{{y.id}}">Delete comment</a>
+            </div>
+            {%endfor%}
+
+            <form action="/addcomment" method="POST">
+                {%csrf_token%}
+                <div class='col-sm-11' style="margin-top:25px">
+                    <p>Post a comment</p>
+                    <textarea name='commnet' style="width:100%;height:70px;border: 2px solid black;border-radius: 5px"></textarea>
+                    <input type="hidden" name='messageid' value='{{x.id}}'>
+                    <input type="hidden" name='commentwriter' value='{{user.id}}'>
+                    <input type="submit" value="Post a comment" class='offset-sm-10 btn btn-success shadow'>
+                </div>
+            </form>
+
+        </div>
+        {%endfor%}
+
+
+    </div>
+</body>
+
+</html

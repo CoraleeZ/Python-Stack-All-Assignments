@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.0/css/bootstrap.min.css" integrity="sha384-PDle/QlgIONtM1aqA2Qemk5gPOE7wFq8+Em+G/hmo5Iq0CCmYZLv3fVRDJ4MMwEA" crossorigin="anonymous">
+
+    <title>Home</title>
+    {% load static %}
+</head>
+
+<body>
+    <div class='row' style="margin:0px 0px 3% 0px; padding:0px 10px">
+        <h3 class='col-sm-6'>Welcome {{user.first_name}}!</h3>
+        <div class='ml-auto' style="margin-top:10px;">
+            <a href="/books/add"><u>Add Book and Review</u></a><a style="margin-left:20px" href="/logout"><u>Log Out</u></a>
+        </div>
+    </div>
+    <div>
+
+        <div class='col-sm-6 d-inline-block'>
+            <p style="font-weight:600">Recent Book Reviews:</p>
+            {%for x in reviews%}
+            <div class='offset-sm-1 col-sm-10'>
+                <a style='display: block; font-size:20px;font-weight: 600' href="/books/{{x.book.id}}"><u>{{x.book.book_name}}</u></a>
+                <div class='row offset-sm-1' style='font-size:13px'>
+                    <p>Rating:</p>
+                    <p>{{x.rate}}</p>
+                    {%for y in x.star%}
+                    <img style='width: 10px;height: 10px' src="{% static 'reds/start.png' %}">{%endfor%}
+                </div>
+                <p class='offset-sm-1' style='font-size:13px'><a href="/users/{{x.user.id}}"><u>{{x.user.first_name}}</u></a>says:{{x.review}}</p>
+                <p class='offset-sm-1' style='font-size:13px;margin-top:13px'>Posted on {{x.created_at}}</p>
+
+            </div>
+            {%endfor%}
+
+
+        </div>
+
+
+        <div class='col-sm-5 d-inline-block' style="vertical-align:top">
+            <p style="font-weight:600">Other Books with Reviews:</p>
+            <div class='offset-sm-1 col-sm-10'>
+                <div style='border:2px solid black;width:300px;height:200px;overflow-y: scroll'>
+                    {%for x in otherbook%}
+                    <p><a style='font-size:20px;font-weight:600' href="/books/{{x.id}}"><u>{{x.book_name}}</u></a></p>
+                    {%endfor%}</div>
+
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Great Number Game</title>
+    <link rel="stylesheet" href="{{url_for('static',filename='gng.css')}}">
+</head>
+
+
+<body>
+    <h1>Great Number Game</h1>
+    <h2>Guess what number it is from 1 to 100?</h2>
+    <h2>You answer:</h2>
+
+    <div class={{nameofclass}}>{{answer}}</div>
+    <br><br>
+    <form action='/game' method='POST'>
+        <input type='text' name='guessnum'>
+        <input type="submit" value='submit'>
+    </form>
+    <p class={{playa}}><a href='/clear'>Play again</a></p>
+</body>
+
+</html>

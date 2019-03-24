@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>playground</title>
+    <style>
+        h1 {
+            text-align: center;
+        }
+        
+        div {
+            width: 100%;
+            display: inline-block;
+        }
+        
+        .one {
+            height: 200px;
+            width: 200px;
+            background-color: rgb(55, 189, 230);
+            border: 5px solid black;
+            display: inline-block;
+            margin: 20px;
+        }
+        
+        .one:nth-of-type(1) {
+            margin: 0px 10px 0px 250px
+        }
+        
+        .one:nth-of-type(2) {
+            margin: 0px 10px 0px 10px
+        }
+        
+        .one:nth-of-type(3) {
+            margin: 10px 250px 0px 10px
+        }
+        
+        .two {
+            height: 200px;
+            width: 200px;
+            background-color: rgb(55, 189, 230);
+            border: 5px solid black;
+            display: inline-block;
+            margin: 20px;
+        }
+        
+        .three {
+            height: 200px;
+            width: 200px;
+            border: 5px solid black;
+            display: inline-block;
+            margin: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Welcome!</h1>
+    <div>
+        {%for x in range(num_times):%}
+        <div class={{class_name}} style="background-color:{{box_color}}"></div>
+        {%endfor%}
+
+    </div>
+
+</body>
+
+</html>

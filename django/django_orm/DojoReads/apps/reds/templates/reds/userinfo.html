@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.0/css/bootstrap.min.css" integrity="sha384-PDle/QlgIONtM1aqA2Qemk5gPOE7wFq8+Em+G/hmo5Iq0CCmYZLv3fVRDJ4MMwEA" crossorigin="anonymous">
+
+    <title>User Info</title>
+</head>
+
+<body>
+    <div class='row offset-sm-1' style="margin:0px 0px 3% 0px; padding:0px 10px">
+        <h3 class='col-sm-6'></h3>
+        <div class='ml-auto' style="margin-top:10px;">
+            <a href="/books"><u>Home</u></a> <a style="margin-left:20px" href="/books/add"><u>Add Book and Review</u></a> <a style="margin-left:20px" href="/logout"><u>Log Out</u></a>
+        </div>
+    </div>
+
+    <div class='offset-sm-1'>
+        <h3>User Alias:{{user.first_name}}</h3>
+        <p>Name:{{user.first_name}} {{user.last_name}}</p>
+        <p>Email:{{user.email}}</p>
+        <p>Total Reviews:{{num_re}}</p>
+    </div>
+    <div class='offset-sm-1' style=' margin-top:70px'>
+        <p style='font-weight:600;'>Posted reviews on the following books:</p>
+        {%for x in user.review.all %}
+        <a class='offset-sm-1 d-block' href="/books/{{x.book.id}}"><u>{{x.book.book_name}}</u></a> {%endfor%}
+    </div>
+</body>
+
+</html>

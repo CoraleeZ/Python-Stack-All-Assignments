@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>random_word</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'one/index.css'%}">
+</head>
+
+<body>
+    <div class='one'>Random Word(attempt #{{request.session.count}}</div>
+    <div class='two'>{{request.session.random}}</div>
+    <!-- <button><a href="random_word/generate">Generate</a></button> -->
+</body>
+
+</html>

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.0/css/bootstrap.min.css" integrity="sha384-PDle/QlgIONtM1aqA2Qemk5gPOE7wFq8+Em+G/hmo5Iq0CCmYZLv3fVRDJ4MMwEA" crossorigin="anonymous">
+
+    <title>Add a New Book</title>
+    <style>
+        .red {
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class='row' style="margin:0px 0px 3% 0px; padding:0px 10px">
+        <h3 class='col-sm-6'></h3>
+        <div class='ml-auto' style="margin-top:10px;">
+            <a href="/books"><u>Home</u></a><a style="margin-left:20px" href="/logout"><u>Log Out</u></a>
+        </div>
+    </div>
+
+    <div style="width:60%;display: inline-block;vertical-align: text-top;margin-left:12%">
+        <p style="font-weight:600;font-size: 30px">Add a New Book Title and a Review:</p>
+        <form action="/addbookprocess" method='POST'>
+            {%csrf_token%}
+
+            <div class="row" style="margin:15px 0px;">
+                <div class="col-md-4 offset-md-1" style="font-weight:600;">Book Title:</div>
+                <input type="text" class="col-md-6 ml-auto" name="bn">
+            </div>
+
+            <div>
+                {%if messages%} {% for message in messages %}
+                <p {% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</p>
+                {%endfor%}{%endif%}
+            </div>
+
+            <div style="margin:15px 0px;">
+                <div class="col-md-4 offset-md-1" style="font-weight:600;">Author:</div>
+                <div class='row offset-md-2'>
+                    <p>Choose from the list:</p>
+                    <select class="col-md-7 ml-auto" name='anexist'>
+                            <option value="" disabled selected>-Select your option-</option>
+                            {% for x in authorname %}
+                            <option value="{{x.id}}">{{x.author_name}}</option>
+                            {%endfor%}
+                    </select>
+                </div>
+                <div class='row offset-md-2' style="margin-top:10px">
+                    <p>Or add a new author:</p>
+                    <input type="text" class="col-md-7 ml-auto" name="an">
+                </div>
+            </div>
+
+
+            <div class="row" style="margin:15px 0px;">
+                <p class="col-md-4 offset-md-1" style="font-weight:600;">Review:</p>
+                <textarea name='review' style='height: 100px;' class='col-md-7 ml-auto'></textarea>
+            </div>
+
+
+            <div class="row" style="margin:15px 0px;">
+                <p class="col-md-1 offset-md-1" style="font-weight:600;">Rating:</p>
+                <select class="col-md-1 offset-md-1" name='rate'>
+                    
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                         
+                    </select>
+                <p style="font-weight:600;"> stars.</p>
+            </div>
+            <input type="submit" value="Add Book And Review" class='btn shadow border offset-md-9'>
+        </form>
+    </div>
+
+</body>
+
+</html>

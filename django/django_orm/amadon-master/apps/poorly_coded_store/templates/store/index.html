@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <title>Amadon</title>
+</head>
+
+<body style="padding-left:20%">
+    <h1>Amadon Store!</h1>
+    <table class="table table-striped col-sm-9 border">
+        <thead>
+            <tr>
+                <th class='border-left border-right' scope="col-2">Item</th>
+                <th class='border-left border-right' scope="col-1">Price</th>
+                <th class='border-left border-right' scope="col-1">Quantity</th>
+                <th class='border-left border-right' scope="col-1">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for product in all_products %}
+            <tr>
+                <form action="amadon/process" method="post">
+                    {% csrf_token %}
+                    <td class='border-left border-right'>{{product.description}}</td>
+                    <td class='border-left border-right'><input type="hidden" name="id" value="{{product.id}}">{{product.price}}</td>
+                    <td class='border-left border-right'><select name="quantity">
+                        <option value="1">1</option>              
+                        <option value="2">2</option>              
+                        <option value="3">3</option>              
+                    </select></td>
+                    <td class='border-left border-right'><input class='btn shadow border' type="submit" value="Buy!"></td>
+                </form>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+
+</html>

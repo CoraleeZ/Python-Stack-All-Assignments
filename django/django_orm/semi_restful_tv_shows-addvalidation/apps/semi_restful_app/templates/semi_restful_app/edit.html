@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" rel="stylesheet" type="text/css" />
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $("#start_datepicker").datepicker();
+
+
+        });
+    </script>
+    <style>
+        .red {
+            color: red;
+        }
+    </style>
+    <title>New</title>
+</head>
+
+<body style="width:100%">
+    <a class="offset-sm-11" href="/shows"><u>Go Back</u></a>
+
+    <div class="offset-md-4 ">
+        <h1>Edit Show {{editinfo.id}}</h1>
+        <form action="/shows/{{editinfo.id}}/update" method="POST">
+            {%csrf_token%} {%if messages%} {% for message in messages %}
+            <p {% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</p>
+            {%endfor%}{%endif%}
+            <p>Title</p>
+            <input type="text " name="ti" class="col-sm-5  d-block" value="{{editinfo.title}}">
+
+            <div class='col-sm-3 d-inline-block offset-sm-0' style='padding:0px;margin-top:40px'>
+                <p>Network</p>
+                <input type="text " name="net" class='col-sm-11' value='{{editinfo.network.network_name}}'>
+            </div>
+            <div class='d-inline-block' style='padding:0px'>
+                <p>Release Date</p>
+                <input type="text " name="d" id="start_datepicker" class="col-sm-7 " placeholder="mm/dd/yyyy" value="{{editinfo.release_date}}">
+            </div>
+
+            <p style='padding:0px;margin-top:40px'>Description</p>
+            <textarea name="des" value='{{editinfo.desc}}' class='col-sm-5'></textarea>
+            <input style='margin-top:40px' type="submit" class="btn shadow d-block border offset-sm-2" value="Update">
+
+        </form>
+        <a href="/shows/{{editinfo.id}}" class="offset-sm-2"><u>Go to Show</u></a>
+    </div>
+
+</body>

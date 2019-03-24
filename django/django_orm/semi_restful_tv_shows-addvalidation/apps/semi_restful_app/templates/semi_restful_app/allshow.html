@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <title>All Shows</title>
+</head>
+
+<body>
+    <h1>All Shows</h1>
+
+    <table class='d-inline-block col-sm-4 ml-auto table-striped' style="vertical-align:top">
+        <thead>
+            <tr class="table-info">
+                <th style="border-left:1px solid black;border-right:1px solid black;width: 80px">ID</th>
+                <th style="border-left:1px solid black;border-right:1px solid black;width: 120px">Title</th>
+                <th style="border-left:1px solid black;border-right:1px solid black;width: 120px">Network</th>
+                <th style="border-left:1px solid black;border-right:1px solid black;width: 120px">Release Date</th>
+                <th style="border-left:1px solid black;border-right:1px solid black;width: 120px">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {%for one in allinfo%}
+            <tr>
+                <td style="border-left:1px solid black;border-right:1px solid black;">{{one.id}}</td>
+                <td style="border-left:1px solid black;border-right:1px solid black;">{{one.title}}</td>
+                <td style="border-left:1px solid black;border-right:1px solid black;">{{one.network.network_name}}</td>
+                <td style="border-left:1px solid black;border-right:1px solid black;">{{one.release_date}}</td>
+                <td style="border-left:1px solid black;border-right:1px solid black;">
+                    <a href="/shows/{{one.id}}"><u>Show</u></a>|<a href="/shows/{{one.id}}/edit"><u>Edit</u></a>|<a href="/shows/{{one.id}}/destroy"><u>Delete</u></a>
+                </td>
+            </tr>
+            {%endfor%}
+        </tbody>
+
+
+    </table>
+
+    <a href="/shows/new"><u>Add a New Show</u></a>
+</body>
+
+</html>

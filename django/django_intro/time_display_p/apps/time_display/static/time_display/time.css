@@ -1,0 +1,18 @@
+body {
+    width: 100%;
+    text-align: center
+}
+
+.one {
+    width: 400px;
+    margin: 50px auto;
+    font-size: 30px;
+    border: 2px solid black
+}
+
+.two {
+    font-size: 60px;
+    border: 2px solid black;
+    width: 700px;
+    margin: auto
+}

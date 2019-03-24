@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>result</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+</head>
+
+<body>
+
+    {%if get_flashed_messages()%} {%for one in get_flashed_messages()%}
+    <p style='color:red;'>{{one}}</p>
+    {%endfor%} {%endif%}
+    <div class="border col-sm-6">
+        <h1>Submitted Info</h1>
+        <p>Name: {{result[0]['Name']}}</p>
+        <p>location: {{result[0]['location']}}</p>
+        <p>Favorite Language: {{result[0]['lan']}}</p>
+        <P>Comment: {{result[0]['comment']}}</P>
+
+        <button style="margin:1% 0px 1% 80%;"><a  href="/">Goback</a></button>
+    </div>
+</body>
+
+</html>

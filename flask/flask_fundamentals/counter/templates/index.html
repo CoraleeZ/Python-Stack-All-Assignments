@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>counter</title>
+</head>
+
+<body>
+    <h1>counter</h1>
+    <p>{{session['visit_time']}} times!</p>
+    <form action="/number" method="POST">
+        how many times u want to add:<input type="text" name="number">
+        <input type="submit" value="submit">
+    </form>
+
+    <a href="/addtow">click me add 2</a>
+    <a href='/reset'>reset</a>
+
+    <p>Acutally visit time:{{acvist}}</p>
+</body>
+
+</html>

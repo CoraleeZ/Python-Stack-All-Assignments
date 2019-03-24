@@ -1,0 +1,44 @@
+* {
+    text-align: center
+}
+
+h1,
+h2 {
+    text-align: center
+}
+
+.wrong {
+    background-color: brown;
+    height: 200px;
+    width: 200px;
+    border: 2px solid black;
+    font-size: 15px;
+    font-weight: 600;
+    text-align: center;
+    color: white;
+    padding: 95px auto;
+    display: inline-block;
+    margin: auto 100px;
+}
+
+.right {
+    background-color: green;
+    height: 200px;
+    width: 200px;
+    border: 2px solid black;
+    font-size: 15px;
+    font-weight: 600;
+    text-align: center;
+    color: white;
+    padding: 95px auto;
+    display: inline-block;
+    margin: auto 100px;
+}
+
+.empty {
+    display: none;
+}
+
+.show {
+    display: inline-block;
+}

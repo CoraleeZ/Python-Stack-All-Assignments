@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>C+R</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+</head>
+
+<body class="text-center">
+    <h2>All the Pets!</h2>
+
+
+    <table class="table-striped" style=" margin:0px auto;width:60%;border:1px solid black;">
+        <thead class="bg-success">
+            <tr>
+                <th style="border:1px solid black;width:16%;padding:1%">ID</th>
+                <th style="border:1px solid black;width:42%">Name</th>
+                <th style="border:1px solid black;width:42%">Type</th>
+
+            </tr>
+        </thead>
+        <tbody>
+            {%for onepet in allpet%}
+            <tr>
+                <th style="border:1px solid black;padding:1%">{{onepet['pets']}}</th>
+                <td style="border:1px solid black;">{{onepet['name']}}</td>
+                <td style="border:1px solid black;">{{onepet['type']}}</td>
+
+            </tr>
+            {%endfor%}
+            <!-- <tr>
+                <th style="border:1px solid black;padding:1%">2</th>
+                <td style="border:1px solid black;">Jacob</td>
+                <td style="border:1px solid black;">Thornton</td>
+
+            </tr>
+            <tr>
+                <th style="border:1px solid black;padding:1%">3</th>
+                <td style="border:1px solid black;">Larry</td>
+                <td style="border:1px solid black;">the Bird</td>
+
+            </tr> -->
+        </tbody>
+    </table>
+
+    <hr>
+
+    <h2>Add a Pet</h2>
+
+
+    <form action="/add" method="POST">
+
+        <div class="form-group mb-2  text-center">
+            <label for="name">Name </label>
+            <input type="text" class="b-inline-bock" name="pname" ,id="name">
+        </div>
+
+
+
+        <div class="form-group mb-2 text-center">
+            <label for="type">Type </label>
+            <input type="text" class="b-inline-bock" name="ptype" id="type">
+        </div>
+
+
+        <button type="submit" class="shadow border btn">Add</button>
+    </form>
+
+
+</body>
+
+</html
